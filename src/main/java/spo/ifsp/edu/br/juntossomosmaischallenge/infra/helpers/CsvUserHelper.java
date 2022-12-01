@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import spo.ifsp.edu.br.juntossomosmaischallenge.domain.User;
 import spo.ifsp.edu.br.juntossomosmaischallenge.domain.builders.UserBuilder;
@@ -14,7 +16,8 @@ public class CsvUserHelper {
         //csv: gender,name.title,name.first,name.last,location.street,location.city,location.state,location.postcode,location.coordinates.latitude,location.coordinates.longitude,location.timezone.offset,location.timezone.description,email,dob.date,dob.age,registered.date,registered.age,phone,cell,picture.large,picture.medium,picture.thumbnail
 
         List<String> lines = new ArrayList<>(Arrays.asList(csv.split("\r")));
-        lines.remove(0);
+
+        lines = getValidCsvLines(lines);
 
         List<User> users = new ArrayList<>();
 
@@ -22,9 +25,8 @@ public class CsvUserHelper {
 
             String[] fields = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
             
-            for (int i = 0; i < fields.length; i++)
+            for (int i = 0; i < fields.length - 1; i++)
                 fields[i] = removeQuotesAndNewLineFromString(fields[i]);
-            
 
             User user = new UserBuilder()
                     .withGender(fields[0].charAt(0))
@@ -44,6 +46,20 @@ public class CsvUserHelper {
         }
 
         return users;
+    }
+
+    private static List<String> getValidCsvLines(List<String> csvLines) {
+        csvLines.remove(0);
+        List<String> lines = getCsvLinesWithoutEmptyLines(csvLines);
+
+        return lines;
+    }
+
+    private static List<String> getCsvLinesWithoutEmptyLines(List<String> csvLines) {
+        Predicate<String> notAnEmptyLine = line -> line != null && !(line.trim().isEmpty() || line.trim().equals("\n"));
+        List<String> notEmptyCsvLines = csvLines.stream().filter(notAnEmptyLine).collect(Collectors.toList());
+
+        return notEmptyCsvLines;
     }
 
     private static String removeQuotesAndNewLineFromString(String field) {
