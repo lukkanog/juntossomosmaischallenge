@@ -1,9 +1,7 @@
 package spo.ifsp.edu.br.juntossomosmaischallenge.infra.helpers;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -34,8 +32,8 @@ public class CsvUserHelper {
                     .withLocation(fields[4], fields[5], fields[6], fields[7], fields[8], fields[9])
                     .withTimezone(fields[10], fields[11])
                     .withEmail(fields[12])
-                    .withBirthday(getDateFromString(fields[13]))
-                    .withRegistered(getDateFromString(fields[15]))
+                    .withBirthday(DateHelper.getDateFromString(fields[13]))
+                    .withRegistered(DateHelper.getDateFromString(fields[15]))
                     .withTelephoneNumbers(fields[17].split(";"))
                     .withMobilePhoneNumbers(fields[18].split(";"))
                     .withPicture(fields[19], fields[20], fields[21])
@@ -64,10 +62,5 @@ public class CsvUserHelper {
 
     private static String removeQuotesAndNewLineFromString(String field) {
         return field.replace("\"", "").replace("\n", "");
-    }
-
-    private static Date getDateFromString(String date) throws Exception {
-        date = date.replaceAll("T", " ").replaceAll("Z", "");
-        return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(date);
     }
 }
