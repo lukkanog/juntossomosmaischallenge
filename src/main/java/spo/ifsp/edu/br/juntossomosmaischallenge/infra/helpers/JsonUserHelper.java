@@ -14,8 +14,7 @@ public class JsonUserHelper {
         List<User> users = new ArrayList<>();
 
         JSONArray usersNode = new JSONObject(json).getJSONArray("results");
-
-        // iterate usersNode with a for
+        
         for (int i = 0; i < usersNode.length(); i++) {
             JSONObject jsonUser = usersNode.getJSONObject(i);
 
