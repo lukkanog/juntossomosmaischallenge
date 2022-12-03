@@ -4,6 +4,6 @@ import spo.ifsp.edu.br.juntossomosmaischallenge.domain.User;
 
 import java.util.List;
 
-public interface IUserHttpClent {
+public interface IUserHttpClient {
     List<User> getUsers() throws Exception;
 }
