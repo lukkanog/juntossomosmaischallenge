@@ -4,17 +4,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import spo.ifsp.edu.br.juntossomosmaischallenge.domain.User;
 import spo.ifsp.edu.br.juntossomosmaischallenge.infra.configuration.UriConfiguration;
 import spo.ifsp.edu.br.juntossomosmaischallenge.infra.helpers.CsvUserHelper;
-import spo.ifsp.edu.br.juntossomosmaischallenge.infra.interfaces.IUserHttpClent;
+import spo.ifsp.edu.br.juntossomosmaischallenge.infra.interfaces.IUserHttpClient;
 
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
-import java.util.ArrayList;
 import java.util.List;
 
-public class CsvUserHttpClient implements IUserHttpClent {
+public class CsvUserHttpClient implements IUserHttpClient {
 
     private HttpClient httpClient;
 
