@@ -37,4 +37,8 @@ public class UsersController {
         return _userService.getUsers(pageable);
     }
 
+    @GetMapping("/{id}")
+    public User get(@PathVariable Long id) {
+        return _userService.getUserById(id);
+    }
 }
