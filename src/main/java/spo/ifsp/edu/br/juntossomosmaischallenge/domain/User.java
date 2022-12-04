@@ -5,7 +5,6 @@ import spo.ifsp.edu.br.juntossomosmaischallenge.domain.enums.UserType;
 import javax.persistence.*;
 
 import java.util.List;
-import java.util.UUID;
 import java.util.Date;
 
 @Entity
