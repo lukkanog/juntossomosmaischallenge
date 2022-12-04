@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class UserPage<T> extends PageImpl<T> {
     private int pageNumber;
     private int pageSize;
-    private int totalCount;
+    private long totalCount;
     private List<T> users;
 
     public UserPage(List<T> content, Pageable pageable, long total) {
@@ -52,11 +52,11 @@ public class UserPage<T> extends PageImpl<T> {
         this.pageSize = pageSize;
     }
 
-    public int getTotalCount() {
+    public long getTotalCount() {
         return totalCount;
     }
 
-    public void setTotalCount(int totalCount) {
+    public void setTotalCount(long totalCount) {
         this.totalCount = totalCount;
     }
 
@@ -72,7 +72,7 @@ public class UserPage<T> extends PageImpl<T> {
       UserPage<T> UserPage = new UserPage<T>();
       UserPage.setPageNumber(page.getNumber());
       UserPage.setPageSize(page.getSize());
-      UserPage.setTotalCount(page.getTotalPages());
+      UserPage.setTotalCount(page.getTotalElements());
       UserPage.setUsers(page.getContent());
       return UserPage;
   }
