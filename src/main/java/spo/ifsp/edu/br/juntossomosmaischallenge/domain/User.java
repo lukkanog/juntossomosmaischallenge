@@ -2,20 +2,45 @@ package spo.ifsp.edu.br.juntossomosmaischallenge.domain;
 
 import spo.ifsp.edu.br.juntossomosmaischallenge.domain.enums.UserType;
 
+import javax.persistence.*;
+
 import java.util.List;
 import java.util.Date;
 
+@Entity
+@Table(name="Users")
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private UserType type;
     private char gender;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "nameId", referencedColumnName = "id")
     private Name name;
+
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "locationId", referencedColumnName = "id")
     private Location location;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "timezoneId", referencedColumnName = "id")
     private Timezone timezone;
     private String email;
     private Date birthday;
     private Date registered;
+    
+    @ElementCollection
+    @CollectionTable(name = "telephoneNumber")
     private List<String> telephoneNumbers;
+
+    @ElementCollection
+    @CollectionTable(name = "mobilePhoneNumber")
     private List<String>  mobilePhoneNumbers;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "pictureId", referencedColumnName = "id")
     private Picture picture;
     private String nationality;
 
@@ -32,7 +57,7 @@ public class User {
     }
 
     public void setGender(char gender) {
-        this.gender = gender;
+        this.gender = Character.toUpperCase(gender);
     }
 
     public Name getName() {
