@@ -1,6 +1,5 @@
 package spo.ifsp.edu.br.juntossomosmaischallenge.service.interfaces;
 
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import spo.ifsp.edu.br.juntossomosmaischallenge.domain.User;
 import spo.ifsp.edu.br.juntossomosmaischallenge.domain.pagination.UserPage;
