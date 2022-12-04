@@ -22,13 +22,13 @@ public class UsersController {
         _userService.insertInitialUsers();
     }
 
-    @GetMapping()
+    @GetMapping("/all")
     public List<User> get() {   
         var users = _userService.getUsers();
         return users;
     }
 
-   @GetMapping("/paged")
+   @GetMapping()
    public @ResponseBody Page<User> get(
         @RequestParam(value = "page", required = true, defaultValue = "1") Integer page,
         @RequestParam(value = "size", required = true, defaultValue = "10") Integer size
