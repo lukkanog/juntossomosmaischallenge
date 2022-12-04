@@ -3,6 +3,7 @@ package spo.ifsp.edu.br.juntossomosmaischallenge.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import spo.ifsp.edu.br.juntossomosmaischallenge.domain.User;
+import spo.ifsp.edu.br.juntossomosmaischallenge.domain.enums.UserType;
 import spo.ifsp.edu.br.juntossomosmaischallenge.domain.pagination.UserPage;
 import spo.ifsp.edu.br.juntossomosmaischallenge.infra.CsvUserHttpClient;
 import spo.ifsp.edu.br.juntossomosmaischallenge.infra.JsonUserHttpClient;
@@ -51,6 +52,12 @@ public class UserService implements IUserService {
     @Override
     public UserPage<User> getUsers(Pageable pageable) {
         var page = _userRepository.findAll(pageable);
+        return UserPage.of(page);
+    }
+
+    @Override
+    public UserPage<User> getUsersFromType(Pageable pageable, UserType type) {
+        var page = _userRepository.findAllByType(pageable, type);
         return UserPage.of(page);
     }
 }
