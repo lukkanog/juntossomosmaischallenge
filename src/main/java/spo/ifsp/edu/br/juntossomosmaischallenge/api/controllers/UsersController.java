@@ -23,18 +23,18 @@ public class UsersController {
     }
 
     @GetMapping("/all")
-    public List<User> get() {   
+    public List<User> get() {
         var users = _userService.getUsers();
         return users;
     }
 
-   @GetMapping()
-   public @ResponseBody Page<User> get(
-        @RequestParam(value = "page", required = true, defaultValue = "1") Integer page,
-        @RequestParam(value = "size", required = true, defaultValue = "10") Integer size
-   ) {
-       Pageable pageable = PageRequest.of(page - 1, size);
-       return _userService.getUsers(pageable);
-   }
-    
+    @GetMapping()
+    public @ResponseBody Page<User> get(
+            @RequestParam(value = "page", required = true, defaultValue = "1") Integer page,
+            @RequestParam(value = "size", required = true, defaultValue = "10") Integer size
+    ) {
+        Pageable pageable = PageRequest.of(page - 1, size);
+        return _userService.getUsers(pageable);
+    }
+
 }
