@@ -5,6 +5,7 @@ import spo.ifsp.edu.br.juntossomosmaischallenge.domain.enums.UserType;
 import javax.persistence.*;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.Date;
 
 @Entity
@@ -43,6 +44,14 @@ public class User {
     @JoinColumn(name = "pictureId", referencedColumnName = "id")
     private Picture picture;
     private String nationality;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public UserType getType() {
         return type;
