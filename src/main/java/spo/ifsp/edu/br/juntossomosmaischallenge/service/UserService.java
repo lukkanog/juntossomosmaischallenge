@@ -67,4 +67,10 @@ public class UserService implements IUserService {
         var page = _userRepository.findAllByLocationRegion(pageable, region);
         return UserPage.of(page);
     }
+
+    @Override
+    public UserPage<User> getUsersFromTypeAndRegion(Pageable pageable, UserType type, Region region) {
+        var page = _userRepository.findAllByTypeAndLocationRegion(pageable, type, region);
+        return UserPage.of(page);
+    }
 }

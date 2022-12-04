@@ -39,16 +39,18 @@ public class UsersController {
     ) {
         Pageable pageable = PageRequest.of(page - 1, size);
 
-        UserType userTypeToFilter;
-        Region regionToFilter;
+        UserType userTypeToFilter = type != null ? UserType.valueOf(type.toUpperCase()) : null;
+        Region regionToFilter = region != null ? Region.valueOf(region.toUpperCase()) : null;
 
-        if (type != null && region == null) {
-            userTypeToFilter = UserType.valueOf(type.toUpperCase());
+        if (regionToFilter != null && userTypeToFilter != null) {
+            return _userService.getUsersFromTypeAndRegion(pageable, userTypeToFilter, regionToFilter);
+        }
+
+        if (userTypeToFilter != null && regionToFilter == null) {
             return _userService.getUsersFromType(pageable, userTypeToFilter);
         }
 
-        if (region != null && type == null) {
-            regionToFilter = Region.valueOf(region.toUpperCase());
+        if (regionToFilter != null && userTypeToFilter == null) {
             return _userService.getUsersFromRegion(pageable, regionToFilter);
         }
         

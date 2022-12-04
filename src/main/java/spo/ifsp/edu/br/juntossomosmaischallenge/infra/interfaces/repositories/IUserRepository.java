@@ -16,4 +16,5 @@ public interface IUserRepository extends JpaRepository<User, Long > {
     Optional<User> findById(Long id);
     Page<User> findAllByType(Pageable pageable, UserType type);
     Page<User> findAllByLocationRegion(Pageable pageable, Region region);
+    Page<User> findAllByTypeAndLocationRegion(Pageable pageable, UserType type, Region region);
 }

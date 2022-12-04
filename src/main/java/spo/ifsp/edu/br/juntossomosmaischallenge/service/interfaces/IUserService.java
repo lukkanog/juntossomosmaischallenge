@@ -14,5 +14,6 @@ public interface IUserService {
     UserPage<User> getUsers(Pageable pageable);
     UserPage<User> getUsersFromType(Pageable pageable, UserType type);
     UserPage<User> getUsersFromRegion(Pageable pageable, Region region);
+    UserPage<User> getUsersFromTypeAndRegion(Pageable pageable, UserType type, Region region);
     User getUserById(Long id);
 }
