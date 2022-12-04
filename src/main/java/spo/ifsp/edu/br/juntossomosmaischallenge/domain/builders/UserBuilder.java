@@ -1,8 +1,5 @@
 package spo.ifsp.edu.br.juntossomosmaischallenge.domain.builders;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 

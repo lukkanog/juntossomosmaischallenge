@@ -1,7 +1,5 @@
 package spo.ifsp.edu.br.juntossomosmaischallenge.domain;
 
-import java.util.UUID;
-
 import javax.persistence.*;
 
 import spo.ifsp.edu.br.juntossomosmaischallenge.domain.enums.Region;
