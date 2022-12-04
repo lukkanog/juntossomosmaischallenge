@@ -66,7 +66,7 @@ public class User {
     }
 
     public void setGender(char gender) {
-        this.gender = Character.toUpperCase(gender);
+        this.gender = Character.toLowerCase(gender);
     }
 
     public Name getName() {
