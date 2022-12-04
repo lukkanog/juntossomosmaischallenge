@@ -29,14 +29,6 @@ public class Location {
     @JoinColumn(name = "coordinatesId", referencedColumnName = "id")
     private Coordinates coordinates;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public Region getRegion() {
         return region;
     }

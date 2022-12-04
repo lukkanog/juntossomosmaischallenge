@@ -20,14 +20,6 @@ public class Timezone {
     private String offset;
     private String description;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getOffset() {
         return offset;
     }
