@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import spo.ifsp.edu.br.juntossomosmaischallenge.domain.User;
+import spo.ifsp.edu.br.juntossomosmaischallenge.domain.enums.Region;
 import spo.ifsp.edu.br.juntossomosmaischallenge.domain.enums.UserType;
 
 import java.util.Optional;
@@ -14,4 +15,5 @@ import java.util.Optional;
 public interface IUserRepository extends JpaRepository<User, Long > {
     Optional<User> findById(Long id);
     Page<User> findAllByType(Pageable pageable, UserType type);
+    Page<User> findAllByLocationRegion(Pageable pageable, Region region);
 }
