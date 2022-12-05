@@ -30,8 +30,8 @@ public class JsonUserHelper {
                         jsonUser.getJSONObject("location").getString("city"),
                         jsonUser.getJSONObject("location").getString("state"),
                         String.valueOf(jsonUser.getJSONObject("location").getInt("postcode")),
-                        jsonUser.getJSONObject("location").getJSONObject("coordinates").getString("latitude"),
-                        jsonUser.getJSONObject("location").getJSONObject("coordinates").getString("longitude")
+                        Double.parseDouble(jsonUser.getJSONObject("location").getJSONObject("coordinates").getString("latitude")),
+                        Double.parseDouble(jsonUser.getJSONObject("location").getJSONObject("coordinates").getString("longitude"))
                     )
                     .withTimezone(
                         jsonUser.getJSONObject("location").getJSONObject("timezone").getString("offset"),

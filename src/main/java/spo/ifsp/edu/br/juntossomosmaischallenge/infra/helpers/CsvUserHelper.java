@@ -29,7 +29,7 @@ public class CsvUserHelper {
             User user = new UserBuilder()
                     .withGender(fields[0].charAt(0))
                     .withName(fields[1], fields[2], fields[3])
-                    .withLocation(fields[4], fields[5], fields[6], fields[7], fields[8], fields[9])
+                    .withLocation(fields[4], fields[5], fields[6], fields[7], Double.parseDouble(fields[8]), Double.parseDouble(fields[9]))
                     .withTimezone(fields[10], fields[11])
                     .withEmail(fields[12])
                     .withBirthday(DateHelper.getDateFromString(fields[13]))

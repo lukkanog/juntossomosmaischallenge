@@ -32,7 +32,7 @@ public class UserBuilder implements IUserBuilder {
     }
 
     @Override
-    public IUserBuilder withLocation(String street, String city, String state, String postcode, String latitude, String longitude) {
+    public IUserBuilder withLocation(String street, String city, String state, String postcode, double latitude, double longitude) {
         Coordinates coordinates = new Coordinates(latitude, longitude);
         Location location = new Location(street, city, state, postcode, coordinates);
         user.setLocation(location);

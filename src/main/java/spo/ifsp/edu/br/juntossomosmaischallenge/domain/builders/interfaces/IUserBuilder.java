@@ -7,7 +7,7 @@ import java.util.Date;
 public interface IUserBuilder {
     IUserBuilder withGender(char gender);
     IUserBuilder withName(String title, String first, String last);
-    IUserBuilder withLocation(String street, String city, String state, String postcode, String latitude, String longitude);
+    IUserBuilder withLocation(String street, String city, String state, String postcode, double latitude, double longitude);
     IUserBuilder withTimezone(String offset, String description);
     IUserBuilder withEmail(String email);
     IUserBuilder withBirthday(Date date);
