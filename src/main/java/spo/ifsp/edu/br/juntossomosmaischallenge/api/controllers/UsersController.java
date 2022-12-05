@@ -10,6 +10,8 @@ import io.swagger.annotations.ApiOperation;
 import spo.ifsp.edu.br.juntossomosmaischallenge.domain.User;
 import spo.ifsp.edu.br.juntossomosmaischallenge.domain.enums.Region;
 import spo.ifsp.edu.br.juntossomosmaischallenge.domain.enums.UserType;
+import spo.ifsp.edu.br.juntossomosmaischallenge.domain.helpers.RegionHelper;
+import spo.ifsp.edu.br.juntossomosmaischallenge.domain.helpers.UserTypeHelper;
 import spo.ifsp.edu.br.juntossomosmaischallenge.service.interfaces.IUserService;
 
 import java.util.List;
@@ -35,29 +37,29 @@ public class UsersController {
 
     @GetMapping()
     @ApiOperation(value = "Retorna uma lista de usuários paginada.")
-    public @ResponseBody Page<User> get(
-            @RequestParam(value = "page", required = true, defaultValue = "1") Integer page,
-            @RequestParam(value = "size", required = true, defaultValue = "10") Integer size,
-            @RequestParam(value = "type", required = false) String type,
-            @RequestParam(value = "region", required = false) String region
+    public Page<User> get(
+        @RequestParam(value = "page", required = true, defaultValue = "1") Integer page,
+        @RequestParam(value = "size", required = true, defaultValue = "10") Integer size,
+        @RequestParam(value = "types", required = false) String types,
+        @RequestParam(value = "regions", required = false) String regions
     ) {
         Pageable pageable = PageRequest.of(page - 1, size);
 
-        UserType userTypeToFilter = type != null ? UserType.valueOf(type.toUpperCase()) : null;
-        Region regionToFilter = region != null ? Region.valueOf(region.toUpperCase()) : null;
-
-        if (regionToFilter != null && userTypeToFilter != null) {
-            return _userService.getUsersFromTypeAndRegion(pageable, userTypeToFilter, regionToFilter);
-        }
-
-        if (userTypeToFilter != null && regionToFilter == null) {
-            return _userService.getUsersFromType(pageable, userTypeToFilter);
-        }
-
-        if (regionToFilter != null && userTypeToFilter == null) {
-            return _userService.getUsersFromRegion(pageable, regionToFilter);
-        }
+        List<UserType> typesToFilter = types != null ? UserTypeHelper.getUserTypesByString(types) : null;
+        List<Region> regionsToFilter = regions != null ? RegionHelper.getRegionsByString(regions) : null;
         
+        if (regionsToFilter != null && typesToFilter != null) {
+            return _userService.getUsersFromTypesAndRegions(pageable, typesToFilter, regionsToFilter);
+        }
+
+        if (typesToFilter != null && regionsToFilter == null) {
+            return _userService.getUsersFromTypes(pageable, typesToFilter);
+        }
+
+        if (regionsToFilter != null && typesToFilter == null) {
+            return _userService.getUsersFromRegions(pageable, regionsToFilter);
+        }
+
         return _userService.getUsers(pageable);
     }
 

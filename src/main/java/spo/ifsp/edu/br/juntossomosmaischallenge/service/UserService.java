@@ -81,20 +81,20 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public UserPage<User> getUsersFromType(Pageable pageable, UserType type) {
-        var page = _userRepository.findAllByType(pageable, type);
+    public UserPage<User> getUsersFromTypes(Pageable pageable, List<UserType> types) {
+        var page = _userRepository.findAllByTypeIn(pageable, types);
         return UserPage.of(page);
     }
 
     @Override
-    public UserPage<User> getUsersFromRegion(Pageable pageable, Region region) {
-        var page = _userRepository.findAllByLocationRegion(pageable, region);
+    public UserPage<User> getUsersFromRegions(Pageable pageable, List<Region> regions) {
+        var page = _userRepository.findAllByLocationRegionIn(pageable, regions);
         return UserPage.of(page);
     }
 
     @Override
-    public UserPage<User> getUsersFromTypeAndRegion(Pageable pageable, UserType type, Region region) {
-        var page = _userRepository.findAllByTypeAndLocationRegion(pageable, type, region);
+    public UserPage<User> getUsersFromTypesAndRegions(Pageable pageable, List<UserType> types, List<Region> regions) {
+        var page = _userRepository.findAllByTypeInAndLocationRegionIn(pageable, types, regions);
         return UserPage.of(page);
     }
 }

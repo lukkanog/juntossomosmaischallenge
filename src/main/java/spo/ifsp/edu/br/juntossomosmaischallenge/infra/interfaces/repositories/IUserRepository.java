@@ -9,12 +9,13 @@ import spo.ifsp.edu.br.juntossomosmaischallenge.domain.User;
 import spo.ifsp.edu.br.juntossomosmaischallenge.domain.enums.Region;
 import spo.ifsp.edu.br.juntossomosmaischallenge.domain.enums.UserType;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
 public interface IUserRepository extends JpaRepository<User, Long> {
     Optional<User> findById(Long id);
-    Page<User> findAllByType(Pageable pageable, UserType type);
-    Page<User> findAllByLocationRegion(Pageable pageable, Region region);
-    Page<User> findAllByTypeAndLocationRegion(Pageable pageable, UserType type, Region region);
+    Page<User> findAllByTypeIn(Pageable pageable, List<UserType> types);
+    Page<User> findAllByLocationRegionIn(Pageable pageable, List<Region> regions);
+    Page<User> findAllByTypeInAndLocationRegionIn(Pageable pageable, List<UserType> types, List<Region> regions);
 }

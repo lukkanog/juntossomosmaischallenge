@@ -12,8 +12,8 @@ public interface IUserService {
     void insertInitialUsers();
     List<User> getUsers();
     UserPage<User> getUsers(Pageable pageable);
-    UserPage<User> getUsersFromType(Pageable pageable, UserType type);
-    UserPage<User> getUsersFromRegion(Pageable pageable, Region region);
-    UserPage<User> getUsersFromTypeAndRegion(Pageable pageable, UserType type, Region region);
+    UserPage<User> getUsersFromTypes(Pageable pageable, List<UserType> types);
+    UserPage<User> getUsersFromRegions(Pageable pageable, List<Region> regions);
+    UserPage<User> getUsersFromTypesAndRegions(Pageable pageable, List<UserType> types, List<Region> regions);
     User getUserById(Long id);
 }
