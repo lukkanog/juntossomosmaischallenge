@@ -2,6 +2,8 @@ package spo.ifsp.edu.br.juntossomosmaischallenge.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+
+import spo.ifsp.edu.br.juntossomosmaischallenge.api.exceptions.UserNotFoundException;
 import spo.ifsp.edu.br.juntossomosmaischallenge.domain.User;
 import spo.ifsp.edu.br.juntossomosmaischallenge.domain.enums.Region;
 import spo.ifsp.edu.br.juntossomosmaischallenge.domain.enums.UserType;
@@ -20,7 +22,7 @@ public class UserService implements IUserService {
     @Autowired
     private IUserRepository _userRepository;
 
-    @Autowired 
+    @Autowired
     private IRegionService _regionService;
 
     @Autowired
@@ -61,9 +63,15 @@ public class UserService implements IUserService {
 
     @Override
     public User getUserById(Long id) {
-        return _userRepository
+        var user = _userRepository
                 .findById(id)
                 .orElse(null);
+
+        if (user == null) {
+            throw new UserNotFoundException("User with id " + id + " not found");
+        }
+
+        return user;
     }
 
     @Override
