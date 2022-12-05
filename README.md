@@ -21,3 +21,12 @@ Repositório do *back-end* do Projeto final da disciplina de LP2A4 do curso de A
    ```bash
    mvn spring-boot:run
    ```
+   
+   Por padrão, o projeto irá iniciar o servidor de desenvolvimento no endereço `http://localhost:8080`
+
+### Rotas da API
+É possível visualizar todas as rotas da API através do [**Swagger**](https://swagger.io/). 
+
+Para isso, basta acessar o caminho `/swagger-ui.html`.
+
+Exemplo:  `http://localhost:8080/swagger-ui.html`
