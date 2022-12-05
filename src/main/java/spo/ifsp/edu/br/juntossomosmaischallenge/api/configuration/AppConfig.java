@@ -1,4 +1,4 @@
-package spo.ifsp.edu.br.juntossomosmaischallenge.api;
+package spo.ifsp.edu.br.juntossomosmaischallenge.api.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
