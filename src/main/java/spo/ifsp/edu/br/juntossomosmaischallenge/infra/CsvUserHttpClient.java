@@ -2,7 +2,6 @@ package spo.ifsp.edu.br.juntossomosmaischallenge.infra;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import spo.ifsp.edu.br.juntossomosmaischallenge.domain.User;
-import spo.ifsp.edu.br.juntossomosmaischallenge.infra.configuration.UriConfiguration;
 import spo.ifsp.edu.br.juntossomosmaischallenge.infra.helpers.CsvUserHelper;
 import spo.ifsp.edu.br.juntossomosmaischallenge.infra.interfaces.IUserHttpClient;
 
@@ -14,11 +13,7 @@ import java.time.Duration;
 import java.util.List;
 
 public class CsvUserHttpClient implements IUserHttpClient {
-
     private HttpClient httpClient;
-
-    @Autowired
-    private UriConfiguration uriConfiguration;
 
     public CsvUserHttpClient() {
         this.httpClient =  HttpClient.newBuilder()
@@ -26,8 +21,6 @@ public class CsvUserHttpClient implements IUserHttpClient {
                 .followRedirects(HttpClient.Redirect.NORMAL)
                 .connectTimeout(Duration.ofSeconds(20))
                 .build();
-
-        this.uriConfiguration = new UriConfiguration();
     }
 
     public List<User> getUsers() throws Exception {

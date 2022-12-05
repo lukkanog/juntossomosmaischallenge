@@ -1,7 +1,6 @@
 package spo.ifsp.edu.br.juntossomosmaischallenge.infra;
 
 import spo.ifsp.edu.br.juntossomosmaischallenge.domain.User;
-import spo.ifsp.edu.br.juntossomosmaischallenge.infra.configuration.UriConfiguration;
 import spo.ifsp.edu.br.juntossomosmaischallenge.infra.helpers.JsonUserHelper;
 import spo.ifsp.edu.br.juntossomosmaischallenge.infra.interfaces.IUserHttpClient;
 
@@ -13,10 +12,7 @@ import java.time.Duration;
 import java.util.List;
 
 public class JsonUserHttpClient implements IUserHttpClient {
-
     private HttpClient httpClient;
-
-    private UriConfiguration uriConfiguration;
 
     public JsonUserHttpClient() {
         this.httpClient =  HttpClient.newBuilder()
@@ -24,8 +20,6 @@ public class JsonUserHttpClient implements IUserHttpClient {
                 .followRedirects(HttpClient.Redirect.NORMAL)
                 .connectTimeout(Duration.ofSeconds(20))
                 .build();
-
-        this.uriConfiguration = new UriConfiguration();
     }
 
     @Override
