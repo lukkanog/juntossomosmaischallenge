@@ -37,7 +37,7 @@ public class User {
 
     @ElementCollection
     @CollectionTable(name = "mobilePhoneNumber")
-    private List<String>  mobilePhoneNumbers;
+    private List<String> mobilePhoneNumbers;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "pictureId", referencedColumnName = "id")
