@@ -1,6 +1,7 @@
 package spo.ifsp.edu.br.juntossomosmaischallenge.domain;
 
 import spo.ifsp.edu.br.juntossomosmaischallenge.domain.enums.UserType;
+import spo.ifsp.edu.br.juntossomosmaischallenge.domain.helpers.E164PhoneNumberFormatHelper;
 
 import javax.persistence.*;
 
@@ -121,6 +122,10 @@ public class User {
     }
 
     public void setTelephoneNumbers(List<String> telephoneNumbers) {
+        for (int i = 0; i < telephoneNumbers.size(); i++) {
+            telephoneNumbers.set(i, E164PhoneNumberFormatHelper.format(telephoneNumbers.get(i)));
+        }
+
         this.telephoneNumbers = telephoneNumbers;
     }
 
@@ -129,6 +134,10 @@ public class User {
     }
 
     public void setMobilePhoneNumbers(List<String> mobilePhoneNumbers) {
+        for (int i = 0; i < mobilePhoneNumbers.size(); i++) {
+            mobilePhoneNumbers.set(i, E164PhoneNumberFormatHelper.format(mobilePhoneNumbers.get(i)));
+        }
+
         this.mobilePhoneNumbers = mobilePhoneNumbers;
     }
 
