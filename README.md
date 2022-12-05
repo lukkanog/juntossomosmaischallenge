@@ -1,13 +1,23 @@
 # Juntos Somos Mais - Code Challenge
-Projeto final da disciplina de LP2A4 do curso de Análise e Desenvolvimento de Sistemas do IFSP - Campus São Paulo.
+Repositório do *back-end* do Projeto final da disciplina de LP2A4 do curso de Análise e Desenvolvimento de Sistemas do IFSP - Campus São Paulo.
+
+[Repositório do *front-end*](https://github.com/wilsonbrandao/ProjetoLP2-FrontEnd)
 
 ## Tecnologias utilizadas
 
 ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
 
-### Dependências
-![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=java&logoColor=white) 
-  - [JDK 19](https://www.oracle.com/java/technologies/javase/jdk19-archive-downloads.html) 
 
-![Apache Maven](https://img.shields.io/badge/Apache%20Maven-C71A36?style=for-the-badge&logo=Apache%20Maven&logoColor=white)
-  - [Instalar o Maven](https://maven.apache.org/install.html)
+## Como executar o projeto em ambiente de desenvolvimento
+
+### Pré-requisitos
+- Ter o Maven instalado. [Download](https://maven.apache.org/download.cgi)
+- Ter o Java 19 instalado. [Download](https://www.oracle.com/br/java/technologies/javase-downloads.html)
+
+### Executando o projeto
+- Clonar o repositório
+- No terminal, navegar até a pasta do projeto e executar:
+
+   ```bash
+   mvn spring-boot:run
+   ```
