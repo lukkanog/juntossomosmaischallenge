@@ -12,7 +12,7 @@ import spo.ifsp.edu.br.juntossomosmaischallenge.domain.enums.UserType;
 import java.util.Optional;
 
 @Repository
-public interface IUserRepository extends JpaRepository<User, Long > {
+public interface IUserRepository extends JpaRepository<User, Long> {
     Optional<User> findById(Long id);
     Page<User> findAllByType(Pageable pageable, UserType type);
     Page<User> findAllByLocationRegion(Pageable pageable, Region region);
