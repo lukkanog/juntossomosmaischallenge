@@ -3,6 +3,17 @@ Repositório do *back-end* do Projeto final da disciplina de LP2A4 do curso de A
 
 [Repositório do *front-end*](https://github.com/wilsonbrandao/ProjetoLP2-FrontEnd)
 
+## Integrantes
+[@lukkanog](https://github.com/lukkanog)
+
+[@felipekenzo175](https://github.com/felipekenzo175)
+
+[@nightFirefox](https://github.com/nightFirefox)
+
+[@wilsonbrandao](https://github.com/wilsonbrandao)
+
+[@meira03](https://github.com/meira03)
+
 ## Tecnologias utilizadas
 
 ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
